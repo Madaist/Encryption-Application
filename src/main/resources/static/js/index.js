@@ -3,36 +3,32 @@
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label
                 $(this).next('.custom-file-label').html(fileName);
-            })
+
+                var empty = false;
+                if(document.getElementById("inputGroupFile03").value == "")
+                    empty = true;
+                if (empty) {
+                    $('#encrypt-btn').attr('disabled', 'disabled');
+                } else {
+                    $('#encrypt-btn').removeAttr('disabled');
+                }
+  });
 
  $('#inputGroupFile04').on('change',function(){
                 //get the file name
                 var fileName = $(this).val().replace('C:\\fakepath\\', "");
                 //replace the "Choose a file" label
                 $(this).next('.custom-file-label').html(fileName);
-            })
 
-document.getElementById("encrypt-btn").addEventListener("click", function(){
-    console.log("valoarea este: ");
-    console.log(document.getElementById("inputGroupFile03").value);
-	if(document.getElementById("inputGroupFile03").value == "") {
-		Swal.fire(
-                'Oops..',
-                'You did not upload a file',
-                'error'
-                        )
-         }
-});
-
-document.getElementById("decrypt-btn").addEventListener("click", function(){
-	if(document.getElementById("inputGroupFile04").value == "") {
-		Swal.fire(
-                    'Oops..',
-                    'You did not upload a file',
-                    'error'
-                )
-	}
-});
+                 var empty = false;
+                if(document.getElementById("inputGroupFile03").value == "")
+                    empty = true;
+                if (empty) {
+                    $('#encrypt-btn').attr('disabled', 'disabled');
+                } else {
+                    $('#encrypt-btn').removeAttr('disabled');
+                }
+ });
 
 
 function handleFileSelect(evt) {

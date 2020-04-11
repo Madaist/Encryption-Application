@@ -15,11 +15,4 @@ public class PageController {
         return mav;
     }
 
-    /*
-    @RequestMapping(value = "/")
-    public String homePage(){
-        return "index";
-    }
-
-     */
 }

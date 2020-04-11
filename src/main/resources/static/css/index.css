@@ -76,6 +76,12 @@ body{
 	font-size: 17px;
 	padding-bottom:10px;
 }
+#encrypt-btn{
+	position: fixed;
+	top: 70vh;
+
+}
+
 
 #download-enc, #download-dec{
 	display: block;
@@ -83,4 +89,11 @@ body{
 	top: 85vh;
 	height: 7vh;
 	font-size: 17px;
+}
+
+#message{
+    font-size: 20px;
+    position: fixed;
+    top: 70vh;
+    left: 12vw;
 }
