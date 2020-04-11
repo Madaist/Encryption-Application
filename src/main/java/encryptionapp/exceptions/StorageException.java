@@ -1,4 +1,4 @@
-package exceptions;
+package encryptionapp.exceptions;
 
 public class StorageException extends RuntimeException {
 

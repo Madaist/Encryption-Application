@@ -7,5 +7,5 @@ import java.io.File;
 
 public interface IEncryptionService {
 
-     File encrypt(Resource resource);
+     String encrypt(Resource resource);
 }

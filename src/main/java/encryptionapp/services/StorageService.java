@@ -10,8 +10,8 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 import encryptionapp.config.StorageProperties;
-import exceptions.StorageException;
-import exceptions.StorageFileNotFoundException;
+import encryptionapp.exceptions.StorageException;
+import encryptionapp.exceptions.StorageFileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
