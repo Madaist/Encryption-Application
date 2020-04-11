@@ -21,12 +21,12 @@
                 $(this).next('.custom-file-label').html(fileName);
 
                  var empty = false;
-                if(document.getElementById("inputGroupFile03").value == "")
+                if(document.getElementById("inputGroupFile04").value == "")
                     empty = true;
                 if (empty) {
-                    $('#encrypt-btn').attr('disabled', 'disabled');
+                    $('#decrypt-btn').attr('disabled', 'disabled');
                 } else {
-                    $('#encrypt-btn').removeAttr('disabled');
+                    $('#decrypt-btn').removeAttr('disabled');
                 }
  });
 
@@ -40,7 +40,6 @@ function handleFileSelect(evt) {
         return function(e) {
         var fileContent = e.target.result;
         var key = fileContent.split("\n")[0].trim();
-        console.log(key);
         if(/^[a-zA-Z]+$/.test(key) === false){
             Swal.fire(
                 'Oops..',
@@ -55,4 +54,37 @@ function handleFileSelect(evt) {
 
 
 document.getElementById('inputGroupFile03').addEventListener('change', handleFileSelect, false);
-document.getElementById('inputGroupFile04').addEventListener('change', handleFileSelect, false);
+
+function handleDecryptFileSelect(evt) {
+    var files = evt.target.files;
+    f = files[0];
+    var reader = new FileReader();
+
+    reader.onload = (function(theFile) {
+        return function(e) {
+        var fileContent = e.target.result;
+        var key = fileContent.split("\n")[0].trim();
+        var message = fileContent.substring(key.length).trim();
+        console.log(message);
+        if(/^[a-zA-Z]+$/.test(key) === false){
+            Swal.fire(
+                'Oops..',
+                 'Your key should contain only letters and be a single string',
+                 'error'
+            )
+        };
+
+        if(/^\s+|\d+$/.test(message) === false){
+            Swal.fire(
+                'Oops..',
+                 'Your message should contain only digits',
+                 'error'
+            )
+        }
+        }
+      })(f);
+
+      reader.readAsText(f);
+  };
+
+  document.getElementById('inputGroupFile04').addEventListener('change', handleDecryptFileSelect, false);

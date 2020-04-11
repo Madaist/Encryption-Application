@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class PolybiusSquareService {
 
     private String[][] getSquare(String message, String key) {
-        message = message.toUpperCase();
+
         ArrayList<String> alphabet = new ArrayList<>();
         for (int i = 'A'; i <= 'Z'; i++)
             if(i != 'J')
@@ -32,6 +32,7 @@ public class PolybiusSquareService {
 
     public String encrypt(String message, String key){
         String[][] square = getSquare(message, key);
+        message = message.toUpperCase();
 
         StringBuilder encryptedMessage = new StringBuilder();
 

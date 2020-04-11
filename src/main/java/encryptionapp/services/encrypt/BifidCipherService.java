@@ -11,6 +11,7 @@ public class BifidCipherService {
 
     public String encrypt(String message, String key){
         String[][] square = getSquare(message, key);
+        message = message.toUpperCase();
 
         StringBuilder encryptedMessage = new StringBuilder();
         ArrayList<Integer> firstRow = new ArrayList<>();
@@ -104,7 +105,7 @@ public class BifidCipherService {
     }
 
     private String[][] getSquare(String message, String key) {
-        message = message.toUpperCase();
+
         ArrayList<String> alphabet = new ArrayList<>();
         for (int i = 'A'; i <= 'Z'; i++)
             if(i != 'J')

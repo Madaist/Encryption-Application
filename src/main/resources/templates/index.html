@@ -3,7 +3,6 @@
 <head>
     <title>Encrypt & Decrypt</title>
     <link type="text/css" rel="stylesheet" href = "../css/index.css" />
-    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -25,10 +24,10 @@
     Choose a file that contains the plaintext you want to encrypt, with the key on the first line:
     <div class="input-group mb-3">
         <div class="custom-file">
-            <form id="post-form" method="POST" enctype="multipart/form-data" action="/" >
+            <form id="enc-form" method="POST" enctype="multipart/form-data" action="/encrypt" >
                 <input type="file" name="file" accept=".txt" class="custom-file-input" id="inputGroupFile03">
                 <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
-                <button type="submit" value="Upload" class="btn btn-secondary" id="encrypt-btn" disabled="disabled" >Encrypt</button>
+                <button type="submit" class="btn btn-secondary" id="encrypt-btn" disabled="disabled" >Encrypt</button>
             </form>
         </div>
     </div>
@@ -36,19 +35,17 @@
 </div>
 
 
-
-
 <div id="decrypt">
     Choose a file that contains the encrypted text you want to decrypt, with the key on the first line:
     <div class="input-group mb-3">
         <div class="custom-file">
-            <input type="file" accept=".txt" class="custom-file-input" id="inputGroupFile04">
-            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+            <form id="dec-form" method="POST" enctype="multipart/form-data" action="/decrypt" >
+                <input type="file" accept=".txt" class="custom-file-input" id="inputGroupFile04">
+                <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                <button type="submit" class="btn btn-secondary" id="decrypt-btn" disabled="disabled">Decrypt</button>
+            </form>
         </div>
     </div>
-
-    <button type="button" class="btn btn-secondary" id="decrypt-btn">Decrypt</button>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

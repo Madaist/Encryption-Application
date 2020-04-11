@@ -86,6 +86,7 @@ body{
 #decrypt-btn{
     position: fixed;
     right: 20vw;
+    top: 80vh;
 }
 
 #message{
