@@ -1,4 +1,4 @@
-package encryptionapp.services;
+package encryptionapp.services.storage;
 
 import java.io.*;
 import java.net.MalformedURLException;

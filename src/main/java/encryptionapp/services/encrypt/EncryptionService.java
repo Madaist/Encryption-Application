@@ -1,7 +1,6 @@
-package encryptionapp.services;
+package encryptionapp.services.encrypt;
 
-import encryptionapp.encrypt.BifidCipherEncryption;
-import encryptionapp.encrypt.PolybiusSquareEncryption;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +8,15 @@ import java.io.*;
 
 @Service
 public class EncryptionService implements IEncryptionService {
+
+    private  BifidCipherService bifidCipherService;
+    private PolybiusSquareService polybiusSquareService;
+
+    @Autowired
+    public EncryptionService(BifidCipherService bifidCipherService, PolybiusSquareService polybiusSquareService) {
+        this.bifidCipherService = bifidCipherService;
+        this.polybiusSquareService = polybiusSquareService;
+    }
 
     @Override
     public String encrypt(Resource resource) {
@@ -22,11 +30,8 @@ public class EncryptionService implements IEncryptionService {
             while ((line = bufferedReader.readLine()) != null)
                 message.append(line);
 
-            BifidCipherEncryption bifidCipherEncryption = new BifidCipherEncryption(message.toString(), key);
-            String encryptedMessage1 = bifidCipherEncryption.encrypt();
-
-            PolybiusSquareEncryption polybiusSquareEncryption = new PolybiusSquareEncryption(encryptedMessage1, key);
-            encryptedMessage = polybiusSquareEncryption.encrypt();
+            String encryptedMessage1 = bifidCipherService.encrypt(message.toString(), key);
+            encryptedMessage = polybiusSquareService.encrypt(encryptedMessage1, key);
 
         } catch (IOException e) {
             e.printStackTrace();

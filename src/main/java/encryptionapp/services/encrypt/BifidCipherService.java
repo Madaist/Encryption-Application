@@ -1,20 +1,16 @@
-package encryptionapp.encrypt;
+package encryptionapp.services.encrypt;
+
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BifidCipherEncryption {
-    private String message;
-    private String key;
+@Service
+public class BifidCipherService {
 
-    public BifidCipherEncryption(String message, String key) {
-        this.message = message;
-        this.key = key;
-    }
-
-    public String encrypt(){
-        String[][] square = getSquare();
+    public String encrypt(String message, String key){
+        String[][] square = getSquare(message, key);
 
         StringBuilder encryptedMessage = new StringBuilder();
         ArrayList<Integer> firstRow = new ArrayList<>();
@@ -47,8 +43,8 @@ public class BifidCipherEncryption {
 
 
 
-    public String decrypt(){
-        String[][] square = getSquare();
+    public String decrypt(String message, String key){
+        String[][] square = getSquare(message, key);
 
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> firstRow = new ArrayList<>();
@@ -107,7 +103,7 @@ public class BifidCipherEncryption {
         return decryptedMessage.toString();
     }
 
-    private String[][] getSquare() {
+    private String[][] getSquare(String message, String key) {
         message = message.toUpperCase();
         ArrayList<String> alphabet = new ArrayList<>();
         for (int i = 'A'; i <= 'Z'; i++)

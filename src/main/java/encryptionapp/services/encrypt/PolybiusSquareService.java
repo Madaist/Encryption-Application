@@ -1,20 +1,14 @@
-package encryptionapp.encrypt;
+package encryptionapp.services.encrypt;
+
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
+public class PolybiusSquareService {
 
-public class PolybiusSquareEncryption {
-
-    private String message;
-    private String key;
-
-    public PolybiusSquareEncryption(String message, String key) {
-        this.message = message;
-        this.key = key;
-    }
-
-    private String[][] getSquare() {
+    private String[][] getSquare(String message, String key) {
         message = message.toUpperCase();
         ArrayList<String> alphabet = new ArrayList<>();
         for (int i = 'A'; i <= 'Z'; i++)
@@ -36,8 +30,8 @@ public class PolybiusSquareEncryption {
         return square;
     }
 
-    public String encrypt(){
-        String[][] square = getSquare();
+    public String encrypt(String message, String key){
+        String[][] square = getSquare(message, key);
 
         StringBuilder encryptedMessage = new StringBuilder();
 
@@ -53,9 +47,9 @@ public class PolybiusSquareEncryption {
         return encryptedMessage.toString();
     }
 
-    public String decrypt(){
+    public String decrypt(String message, String key){
 
-        String[][] square = getSquare();
+        String[][] square = getSquare(message, key);
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> encrypted = new ArrayList<>();
 

@@ -1,5 +1,5 @@
 html {
-	font-size: calc(1em + 1vw) /*pt desktop */
+	font-size: calc(1em + 1vw)
 	}
 
 body{
@@ -51,7 +51,7 @@ body{
 	padding: 10px;
 	width: 34vw;
 	height: 40vh;
-	top: 48vh;
+	top: 55vh;
 	position: absolute;
 	font-size: 65%;
 	text-align: left;
@@ -78,17 +78,14 @@ body{
 }
 #encrypt-btn{
 	position: fixed;
-	top: 70vh;
+	top: 80vh;
+	left: 15vw;
 
 }
 
-
-#download-enc, #download-dec{
-	display: block;
-	position: fixed;
-	top: 85vh;
-	height: 7vh;
-	font-size: 17px;
+#decrypt-btn{
+    position: fixed;
+    right: 20vw;
 }
 
 #message{

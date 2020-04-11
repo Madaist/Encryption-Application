@@ -1,4 +1,4 @@
-package encryptionapp.services;
+package encryptionapp.services.encrypt;
 
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
