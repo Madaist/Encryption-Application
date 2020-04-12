@@ -39,4 +39,26 @@ public class EncryptionService implements IEncryptionService {
 
         return encryptedMessage;
     }
+
+    @Override
+    public String decrypt(Resource resource) {
+        String decryptedMessage = null;
+        try {
+            File uploadedFile = resource.getFile();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(uploadedFile));
+            String key = bufferedReader.readLine();
+            StringBuilder message = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null)
+                message.append(line);
+
+            String decryptedMessage1 = polybiusSquareService.decrypt(message.toString(), key);
+            decryptedMessage = bifidCipherService.decrypt(decryptedMessage1, key);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return decryptedMessage;
+    }
 }

@@ -25,7 +25,7 @@ public class FileController {
     }
 
     @PostMapping("/encrypt")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> handleEncryptFileUpload(@RequestParam("file") MultipartFile file) {
 
         storageService.store(file);
         Resource resource = storageService.loadAsResource(file.getOriginalFilename());
@@ -35,6 +35,20 @@ public class FileController {
                 .contentType(MediaType.parseMediaType("text/plain"))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=encrypted.txt")
                 .body(encryptedMessage);
+    }
+
+
+    @PostMapping("/decrypt")
+    public ResponseEntity<String> handleDecryptFileUpload(@RequestParam("file") MultipartFile file) {
+
+        storageService.store(file);
+        Resource resource = storageService.loadAsResource(file.getOriginalFilename());
+        String decryptedMessage = encryptionService.decrypt(resource);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("text/plain"))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=decrypted.txt")
+                .body(decryptedMessage);
     }
 
 

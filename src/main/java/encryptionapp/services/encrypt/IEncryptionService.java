@@ -8,4 +8,5 @@ import java.io.File;
 public interface IEncryptionService {
 
      String encrypt(Resource resource);
+     String decrypt(Resource resource);
 }
