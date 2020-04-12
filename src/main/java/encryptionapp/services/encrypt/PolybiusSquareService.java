@@ -50,6 +50,8 @@ public class PolybiusSquareService {
 
     public String decrypt(String message, String key){
 
+        message = message.replaceAll("[\\n\\t ]", "");
+
         String[][] square = getSquare(message, key);
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> encrypted = new ArrayList<>();
