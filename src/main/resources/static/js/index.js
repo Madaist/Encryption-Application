@@ -45,32 +45,16 @@ function handleEncryptFileSelect(evt) {
             message = message.replace(/\s/g, '');
 
             if(fileContent == ''){
-                Swal.fire(
-                    'Oops..',
-                     'It seems like your file is empty',
-                     'error'
-                )
+                Swal.fire('Oops..', 'It seems like your file is empty', 'error')
             }
             else if(/^[a-zA-Z]+$/.test(key) === false){
-                Swal.fire(
-                    'Oops..',
-                     'Your key should contain only letters and be a single string',
-                     'error'
-                )
+                Swal.fire('Oops..', 'Your key should contain only letters and be a single string', 'error')
             }
             else if(!message){
-                Swal.fire(
-                    'Oops..',
-                     'It seems like your text is empty',
-                     'error'
-                )
+                Swal.fire('Oops..', 'It seems like your text is empty', 'error')
             }
             else if(/^[a-zA-Z]+$/.test(message) === false){
-                Swal.fire(
-                    'Oops..',
-                     'Your message should contain only letters',
-                     'error'
-                )
+                Swal.fire('Oops..', 'Your message should contain only letters', 'error')
             }
         };
       })(f);
@@ -94,40 +78,20 @@ function handleDecryptFileSelect(evt) {
             message = message.replace(/\s/g, '');
 
             if(fileContent == ''){
-                Swal.fire(
-                    'Oops..',
-                     'It seems like your file is empty',
-                     'error'
-                )
+                Swal.fire('Oops..', 'It seems like your file is empty', 'error')
             }
             else if(/^[a-zA-Z]+$/.test(key) === false){
-                Swal.fire(
-                    'Oops..',
-                     'Your key should contain only letters and be a single string',
-                     'error'
-                )
+                Swal.fire('Oops..', 'Your key should contain only letters and be a single string', 'error')
             }
             else if(!message){
-                Swal.fire(
-                    'Oops..',
-                     'It seems like your text is empty',
-                     'error'
-                )
+                Swal.fire('Oops..', 'It seems like your text is empty', 'error')
             }
             else if( /^\d+$/.test(message) === false){
-                Swal.fire(
-                    'Oops..',
-                     'Your message should contain only digits',
-                     'error'
-                )
+                Swal.fire('Oops..', 'Your message should contain only digits', 'error')
             }
             else if(message.length % 2 != 0)
             {
-                Swal.fire(
-                    'Oops..',
-                     'Your message should contain an even number of digits',
-                     'error'
-                )
+                Swal.fire('Oops..', 'Your message should contain an even number of digits', 'error')
             }
         };
       })(f);

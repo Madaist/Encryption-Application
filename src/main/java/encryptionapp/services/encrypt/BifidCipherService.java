@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class BifidCipherService {
 
     public String encrypt(String message, String key){
-        String[][] square = getSquare(message, key);
+        String[][] square = getSquare(key);
         message = message.toUpperCase().replaceAll("[\\n\\t ]", "");
 
         StringBuilder encryptedMessage = new StringBuilder();
@@ -45,7 +45,7 @@ public class BifidCipherService {
 
 
     public String decrypt(String message, String key){
-        String[][] square = getSquare(message, key);
+        String[][] square = getSquare(key);
 
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> firstRow = new ArrayList<>();
@@ -104,8 +104,9 @@ public class BifidCipherService {
         return decryptedMessage.toString();
     }
 
-    private String[][] getSquare(String message, String key) {
+    private String[][] getSquare(String key) {
 
+        key = key.toUpperCase();
         ArrayList<String> alphabet = new ArrayList<>();
         for (int i = 'A'; i <= 'Z'; i++)
             if(i != 'J')

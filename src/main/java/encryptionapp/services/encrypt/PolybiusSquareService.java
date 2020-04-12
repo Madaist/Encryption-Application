@@ -8,8 +8,9 @@ import java.util.stream.Collectors;
 @Service
 public class PolybiusSquareService {
 
-    private String[][] getSquare(String message, String key) {
+    private String[][] getSquare(String key) {
 
+        key = key.toUpperCase();
         ArrayList<String> alphabet = new ArrayList<>();
         for (int i = 'A'; i <= 'Z'; i++)
             if(i != 'J')
@@ -31,7 +32,7 @@ public class PolybiusSquareService {
     }
 
     public String encrypt(String message, String key){
-        String[][] square = getSquare(message, key);
+        String[][] square = getSquare(key);
         message = message.toUpperCase();
 
         StringBuilder encryptedMessage = new StringBuilder();
@@ -51,8 +52,7 @@ public class PolybiusSquareService {
     public String decrypt(String message, String key){
 
         message = message.replaceAll("[\\n\\t ]", "");
-
-        String[][] square = getSquare(message, key);
+        String[][] square = getSquare(key);
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> encrypted = new ArrayList<>();
 
