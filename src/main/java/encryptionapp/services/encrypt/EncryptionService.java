@@ -24,14 +24,15 @@ public class EncryptionService implements IEncryptionService {
         try {
             File uploadedFile = resource.getFile();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(uploadedFile));
-            String key = bufferedReader.readLine();
+            String key1 = bufferedReader.readLine();
+            String key2 = bufferedReader.readLine();
             StringBuilder message = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null)
                 message.append(line);
 
-            String encryptedMessage1 = bifidCipherService.encrypt(message.toString(), key);
-            encryptedMessage = polybiusSquareService.encrypt(encryptedMessage1, key);
+            String encryptedMessage1 = bifidCipherService.encrypt(message.toString(), key1);
+            encryptedMessage = polybiusSquareService.encrypt(encryptedMessage1, key2);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,14 +47,15 @@ public class EncryptionService implements IEncryptionService {
         try {
             File uploadedFile = resource.getFile();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(uploadedFile));
-            String key = bufferedReader.readLine();
+            String key1 = bufferedReader.readLine();
+            String key2 = bufferedReader.readLine();
             StringBuilder message = new StringBuilder();
             String line;
             while ((line = bufferedReader.readLine()) != null)
                 message.append(line);
 
-            String decryptedMessage1 = polybiusSquareService.decrypt(message.toString(), key);
-            decryptedMessage = bifidCipherService.decrypt(decryptedMessage1, key);
+            String decryptedMessage1 = polybiusSquareService.decrypt(message.toString(), key1);
+            decryptedMessage = bifidCipherService.decrypt(decryptedMessage1, key2);
 
         } catch (IOException e) {
             e.printStackTrace();

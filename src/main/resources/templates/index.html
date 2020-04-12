@@ -21,9 +21,10 @@
 
 
 <div id="encrypt">
-    <p>Choose a file that contains the plaintext you want to encrypt, with the key on the first line.</p>
-    <p class="notes" id="note1">Your message should consist only of letters, without punctuation marks.</p>
-    <p class="notes" id="note2">If your message contains numbers, write them in letters. </p>
+    <p id="choose1">Choose a file that contains the plaintext you want to encrypt.</p>
+    <p class="notes" id="note1">The first line should contain the key for the Bifid Cipher.</p>
+    <p class="notes" id="note2">The second line should contain the key for the Polybius Square.</p>
+    <p class="notes" id="note3">The next lines should contain the text - only letters.</p>
     <div class="input-group mb-3">
         <div class="custom-file">
             <form id="enc-form" method="POST" enctype="multipart/form-data" action="/encrypt" >
@@ -38,9 +39,10 @@
 
 
 <div id="decrypt">
-    <p>Choose a file that contains the encrypted text you want to decrypt, with the key on the first line.</p>
-    <p class="notes" id="note3">Your message should consist only of numbers.</p>
-    <p class="notes" id="note4">The key should be a string.</p>
+    <p id="choose2">Choose a file that contains the encrypted text you want to decrypt.</p>
+    <p class="notes" id="note4">The first line should contain the key for the Polybius Square.</p>
+    <p class="notes" id="note5">The second line should contain the key for the Bifid Cipher.</p>
+    <p class="notes" id="note6">The next lines should contain the text - only digits.</p>
     <div class="input-group mb-3">
         <div class="custom-file">
             <form id="dec-form" method="POST" enctype="multipart/form-data" action="/decrypt" >

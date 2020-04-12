@@ -39,16 +39,23 @@ function handleEncryptFileSelect(evt) {
     reader.onload = (function(theFile) {
         return function(e) {
             var fileContent = e.target.result;
-            var key = fileContent.split("\n")[0].trim();
-            var message = fileContent.substring(key.length).trim();
+            var key1 = fileContent.split("\n")[0];
+            var key2 = fileContent.split("\n")[1];
+            var message = fileContent.substring(key1.length + key2.length).trim();
+
             fileContent = fileContent.replace(/\s/g, '');
             message = message.replace(/\s/g, '');
+            key1 = key1.trim();
+            key2 = key2.trim();
 
             if(fileContent == ''){
                 Swal.fire('Oops..', 'It seems like your file is empty', 'error')
             }
-            else if(/^[a-zA-Z]+$/.test(key) === false){
-                Swal.fire('Oops..', 'Your key should contain only letters and be a single string', 'error')
+            else if(/^[a-zA-Z]+$/.test(key1) === false){
+                Swal.fire('Oops..', 'Your first key should contain only letters and be a single string', 'error')
+            }
+            else if(/^[a-zA-Z]+$/.test(key2) === false){
+                Swal.fire('Oops..', 'Your second key should contain only letters and be a single string', 'error')
             }
             else if(!message){
                 Swal.fire('Oops..', 'It seems like your text is empty', 'error')
@@ -73,15 +80,23 @@ function handleDecryptFileSelect(evt) {
     reader.onload = (function(theFile) {
         return function(e) {
             var fileContent = e.target.result;
-            var key = fileContent.split("\n")[0].trim();
-            var message = fileContent.substring(key.length).trim();
+            var key1 = fileContent.split("\n")[0];
+            var key2 = fileContent.split("\n")[1];
+            var message = fileContent.substring(key1.length + key2.length).trim();
+
+            fileContent = fileContent.replace(/\s/g, '');
             message = message.replace(/\s/g, '');
+            key1 = key1.trim();
+            key2 = key2.trim();
 
             if(fileContent == ''){
                 Swal.fire('Oops..', 'It seems like your file is empty', 'error')
             }
-            else if(/^[a-zA-Z]+$/.test(key) === false){
-                Swal.fire('Oops..', 'Your key should contain only letters and be a single string', 'error')
+            else if(/^[a-zA-Z]+$/.test(key1) === false){
+                Swal.fire('Oops..', 'Your first key should contain only letters and be a single string', 'error')
+            }
+            else if(/^[a-zA-Z]+$/.test(key2) === false){
+                Swal.fire('Oops..', 'Your second key should contain only letters and be a single string', 'error')
             }
             else if(!message){
                 Swal.fire('Oops..', 'It seems like your text is empty', 'error')
