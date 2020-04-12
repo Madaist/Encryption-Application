@@ -20,7 +20,7 @@
                 //replace the "Choose a file" label
                 $(this).next('.custom-file-label').html(fileName);
 
-                 var empty = false;
+                var empty = false;
                 if(document.getElementById("inputGroupFile04").value == "")
                     empty = true;
                 if (empty) {
@@ -31,7 +31,7 @@
  });
 
 
-function handleFileSelect(evt) {
+function handleEncryptFileSelect(evt) {
     var files = evt.target.files;
     f = files[0];
     var reader = new FileReader();
@@ -79,7 +79,7 @@ function handleFileSelect(evt) {
   }
 
 
-document.getElementById('inputGroupFile03').addEventListener('change', handleFileSelect, false);
+document.getElementById('inputGroupFile03').addEventListener('change', handleEncryptFileSelect, false);
 
 function handleDecryptFileSelect(evt) {
     var files = evt.target.files;

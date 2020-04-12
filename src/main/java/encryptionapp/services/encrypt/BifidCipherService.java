@@ -11,7 +11,7 @@ public class BifidCipherService {
 
     public String encrypt(String message, String key){
         String[][] square = getSquare(message, key);
-        message = message.toUpperCase();
+        message = message.toUpperCase().replaceAll("[\\n\\t ]", "");
 
         StringBuilder encryptedMessage = new StringBuilder();
         ArrayList<Integer> firstRow = new ArrayList<>();

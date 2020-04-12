@@ -14,5 +14,4 @@ public class PageController {
         mav.setViewName("index");
         return mav;
     }
-
 }
