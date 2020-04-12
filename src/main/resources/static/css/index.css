@@ -51,7 +51,7 @@ body{
 	padding: 10px;
 	width: 34vw;
 	height: 40vh;
-	top: 55vh;
+	top: 50vh;
 	position: absolute;
 	font-size: 65%;
 	text-align: left;
@@ -78,7 +78,7 @@ body{
 }
 #encrypt-btn{
 	position: fixed;
-	top: 80vh;
+	top: 87vh;
 	left: 15vw;
 
 }
@@ -86,12 +86,18 @@ body{
 #decrypt-btn{
     position: fixed;
     right: 20vw;
-    top: 80vh;
+    top: 87vh;
 }
 
-#message{
-    font-size: 20px;
-    position: fixed;
-    top: 70vh;
-    left: 12vw;
+
+.notes{
+    font-size: small;
+    margin-top: 0em;
+    margin-bottom: 0em;
+
+}
+
+
+#note2, #note4{
+    margin-bottom: 1em;
 }

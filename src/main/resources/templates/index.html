@@ -21,7 +21,9 @@
 
 
 <div id="encrypt">
-    Choose a file that contains the plaintext you want to encrypt, with the key on the first line:
+    <p>Choose a file that contains the plaintext you want to encrypt, with the key on the first line.</p>
+    <p class="notes" id="note1">Your message should consist only of letters, without punctuation marks.</p>
+    <p class="notes" id="note2">If your message contains numbers, write them in letters. </p>
     <div class="input-group mb-3">
         <div class="custom-file">
             <form id="enc-form" method="POST" enctype="multipart/form-data" action="/encrypt" >
@@ -36,7 +38,9 @@
 
 
 <div id="decrypt">
-    Choose a file that contains the encrypted text you want to decrypt, with the key on the first line:
+    <p>Choose a file that contains the encrypted text you want to decrypt, with the key on the first line.</p>
+    <p class="notes" id="note3">Your message should consist only of numbers.</p>
+    <p class="notes" id="note4">The key should be a string.</p>
     <div class="input-group mb-3">
         <div class="custom-file">
             <form id="dec-form" method="POST" enctype="multipart/form-data" action="/decrypt" >
