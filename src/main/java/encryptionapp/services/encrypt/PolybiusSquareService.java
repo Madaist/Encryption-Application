@@ -1,42 +1,29 @@
 package encryptionapp.services.encrypt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 @Service
 public class PolybiusSquareService {
 
-    private String[][] getSquare(String key) {
+    private SquareService squareService;
 
-        key = key.toUpperCase();
-        ArrayList<String> alphabet = new ArrayList<>();
-        for (int i = 'A'; i <= 'Z'; i++)
-            if(i != 'J')
-                alphabet.add(String.valueOf((char)i));
-
-        List<String> distinctKeyLetters = key.chars().mapToObj(e -> Character.toString((char) e))
-                .distinct().collect(Collectors.toList());
-
-        ArrayList<String> polybiusSquare = new ArrayList<>(distinctKeyLetters);
-        alphabet.removeAll(distinctKeyLetters);
-        polybiusSquare.addAll(alphabet);
-
-        int k =0;
-        String[][] square = new String[5][5];
-        for(int i = 0; i < 5; i++)
-            for(int j = 0; j < 5; j++)
-                square[i][j] = polybiusSquare.get(k++);
-        return square;
+    @Autowired
+    public PolybiusSquareService(SquareService squareService) {
+        this.squareService = squareService;
     }
 
     public String encrypt(String message, String key){
-        String[][] square = getSquare(key);
+        String[][] square = squareService.getSquare(key);
         message = message.toUpperCase();
 
         StringBuilder encryptedMessage = new StringBuilder();
 
+        //pentru fiecare litera din mesajul clar, ii caut pozitia in patratul Poybius
+        //si o adaug la mesajul criptat
         for(int c = 0; c < message.length(); c++)
             for(int i = 0; i < square.length; i++)
                 for(int j = 0; j < square[i].length; j++)
@@ -52,18 +39,20 @@ public class PolybiusSquareService {
     public String decrypt(String message, String key){
 
         message = message.replaceAll("[\\n\\t ]", "");
-        String[][] square = getSquare(key);
+        String[][] square = squareService.getSquare(key);
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> encrypted = new ArrayList<>();
 
+        // convertesc cifrele din mesajul criptat(primit ca string) in numere
         for(int i = 0; i < message.length(); i++)
             encrypted.add(Integer.parseInt(String.valueOf(message.charAt(i))));
 
+        //iau perechi de doua cate doua cifre si vad ce litera se gaseste la pozitia respectiva
+        //litera o adaug la mesajul criptat
         for(int i = 0; i < encrypted.size()-1; i+= 2)
             decryptedMessage.append(square[encrypted.get(i)-1][encrypted.get(i+1)-1]);
 
         System.out.println("Decrypted message: " + decryptedMessage);
         return decryptedMessage.toString();
     }
-
 }
