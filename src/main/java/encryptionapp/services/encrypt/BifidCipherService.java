@@ -63,6 +63,7 @@ public class BifidCipherService {
 
     public String decrypt(String message, String key){
         String[][] square = squareService.getSquare(key);
+        message = message.toUpperCase();
 
         StringBuilder decryptedMessage = new StringBuilder();
         ArrayList<Integer> firstRow = new ArrayList<>();
@@ -75,7 +76,7 @@ public class BifidCipherService {
             //prima jumatate
             for (i = 0; i < message.length() / 2; i++) {
                 for (int j = 0; j < square.length; j++)
-                    for (int z = 0; z < square[i].length; z++)
+                    for (int z = 0; z < square[j].length; z++)
                         if (square[j][z].equals(String.valueOf(message.charAt(i)))) {
                             firstRow.add(j+1);
                             firstRow.add(z+1);
@@ -84,7 +85,7 @@ public class BifidCipherService {
             // litera din mijloc va avea o cifra corespunzatoare pozitiei pe prima linie
             // si a doua cifra pe a doua linie
             for (int j = 0; j < square.length; j++)
-                for (int z = 0; z < square[i].length; z++)
+                for (int z = 0; z < square[j].length; z++)
                     if (square[j][z].equals(String.valueOf(message.charAt(i)))) {
                         firstRow.add(j);
                         secondRow.add(z);
@@ -102,7 +103,7 @@ public class BifidCipherService {
         else { //daca lungimea mesajului este para, nu ne mai punem problema literei din mijloc
             for (int i = 0; i < message.length() / 2; i++) {
                 for (int j = 0; j < square.length; j++)
-                    for (int z = 0; z < square[i].length; z++)
+                    for (int z = 0; z < square[j].length; z++)
                         if (square[j][z].equals(String.valueOf(message.charAt(i)))) {
                             firstRow.add(j+1);
                             firstRow.add(z+1);
@@ -110,7 +111,7 @@ public class BifidCipherService {
             }
             for (int i = message.length() / 2; i < message.length(); i++) {
                 for (int j = 0; j < square.length; j++)
-                    for (int z = 0; z < square[i].length; z++)
+                    for (int z = 0; z < square[j].length; z++)
                         if (square[j][z].equals(String.valueOf(message.charAt(i)))) {
                             secondRow.add(j+1);
                             secondRow.add(z+1);
